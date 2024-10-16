@@ -11,15 +11,23 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [theme, setTheme] = useState<Theme>(() => {
-        // Inicializar o tema com a preferência armazenada no localStorage ou o tema padrão
-        const storedTheme = localStorage.getItem('theme') as Theme;
-        return storedTheme ? storedTheme : 'light';
-    });
+    const [theme, setTheme] = useState<Theme>('light'); // Tema padrão inicial é 'light'
 
+    // useEffect para pegar o tema do localStorage apenas no lado do cliente
     useEffect(() => {
-        // Atualizar o localStorage sempre que o tema mudar
-        localStorage.setItem('theme', theme);
+        if (typeof window !== 'undefined') { // Check to ensure we're on the client side
+            const storedTheme = localStorage.getItem('theme') as Theme;
+            if (storedTheme) {
+                setTheme(storedTheme);
+            }
+        }
+    }, []);
+
+    // useEffect para salvar o tema no localStorage sempre que ele mudar
+    useEffect(() => {
+        if (typeof window !== 'undefined') { // Check to ensure we're on the client side
+            localStorage.setItem('theme', theme);
+        }
     }, [theme]);
 
     const toggleTheme = () => {
