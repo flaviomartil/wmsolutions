@@ -4,14 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie, faUserNinja, faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 interface TeamMember {
     name: string;
     role: string;
-    icon: any;
+    icon: IconDefinition;
     photo?: string; // url da foto
 }
-
 function TeamSection() {
     const { theme } = useTheme();
 
