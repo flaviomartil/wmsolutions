@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import { AppProps } from 'next/app';
 import { ThemeProvider } from '../context/ThemeContext';
@@ -8,6 +7,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <ThemeProvider>
             <Component {...pageProps} />
         </ThemeProvider>
+
     );
 }
 

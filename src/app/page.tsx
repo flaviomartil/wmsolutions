@@ -7,6 +7,7 @@ import TeamSection from '../components/TeamSection';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+
 const Page = () => (
     <div>
         <Navbar/>
@@ -17,5 +18,9 @@ const Page = () => (
           <Footer/>
     </div>
 );
+
+
+
+
 
 export default Page;

@@ -1,49 +1,42 @@
-'use client';
 import React from "react";
-import localFont from "next/font/local";
-import { useTheme, ThemeProvider } from "../context/ThemeContext";
-import Head from "next/head"; // Importação de "Head" adicionada
 import "../styles/globals.css";
+import ThemeManagerWrapper from "@/components/ThemeManager";
+import Head from "next/head";
+import type {Metadata} from "next";
 
-const geistSans = localFont({
-    src: "./fonts/GeistVF.woff",
-    variable: "--font-geist-sans",
-    weight: "100 900",
-});
+interface RootLayoutProps {
+    children: React.ReactNode;
+}
 
-const geistMono = localFont({
-    src: "./fonts/GeistMonoVF.woff",
-    variable: "--font-geist-mono",
-    weight: "100 900",
-});
+export const metadata: Metadata = {
+    title: 'WMSolutions - Agência de Desenvolvimento de Software',
+    description: 'WMSolutions é uma agência de desenvolvimento de software especializada em criar soluções personalizadas para empresas de diversos setores.',
+}
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
-    const { theme } = useTheme();
-
+const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
     return (
-        <html lang="pt-BR">
+        <>
         <Head>
-            <title>WMSolutions - Agência de Desenvolvimento de Software</title>
-            <meta name="description" content="WMSolutions é uma agência de desenvolvimento de software especializada em criar soluções personalizadas para empresas de diversos setores." />
-            <meta name="keywords" content="WMSolutions, desenvolvimento de software, soluções personalizadas, tecnologia, serviços de TI, web development, app development" />
-            <meta name="author" content="WMSolutions Team" />
-            {/* Adicione mais tags meta aqui conforme necessário */}
+            <link
+                rel="stylesheet"
+                href="./fonts/GeistVF.woff"
+                type="font/woff"
+                crossOrigin="anonymous"
+            />
+            <link
+                rel="stylesheet"
+                href="./fonts/GeistMonoVF.woff"
+                type="font/woff"
+                crossOrigin="anonymous"
+            />
         </Head>
-        <body className={`${theme === 'dark' ? 'dark-theme' : 'light-theme'} ${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
-        </body>
+        <html lang="pt-BR">
+        <ThemeManagerWrapper>
+            {children}
+        </ThemeManagerWrapper>
         </html>
+        </>
     );
 }
 
-const Root = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <ThemeProvider>
-            <RootLayout>
-                {children}
-            </RootLayout>
-        </ThemeProvider>
-    );
-}
-
-export default Root;
+export default RootLayout;

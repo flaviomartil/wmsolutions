@@ -73,15 +73,20 @@ function Navbar() {
                         <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} className="mb-1"/> {/* Alterna entre ícones */}
                     </button>
                 </div>
-                <button onClick={toggleMenu} className="md:hidden flex items-center focus:outline-none">
-                    <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                        {isOpen ? (
-                            <path fillRule="evenodd" clipRule="evenodd" d="M18.364 5.636a1 1 0 00-1.414-1.414L12 9.172 7.05 4.222a1 1 0 00-1.414 1.414L10.828 12l-5.192 5.192a1 1 0 001.414 1.414L12 14.828l4.95 4.95a1 1 0 001.414-1.414L13.172 12l5.192-5.192z"/>
-                        ) : (
-                            <path fillRule="evenodd" clipRule="evenodd" d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z"/>
-                        )}
-                    </svg>
-                </button>
+                <div className="md:hidden flex items-center space-x-2">
+                    <button onClick={toggleTheme} className="hover:text-gray-300 flex flex-col items-center transition duration-200">
+                        <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} className="mb-1"/> {/* Alterna entre ícones */}
+                    </button>
+                    <button onClick={toggleMenu} className="flex items-center focus:outline-none">
+                        <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                            {isOpen ? (
+                                <path fillRule="evenodd" clipRule="evenodd" d="M18.364 5.636a1 1 0 00-1.414-1.414L12 9.172 7.05 4.222a1 1 0 00-1.414 1.414L10.828 12l-5.192 5.192a1 1 0 001.414 1.414L12 14.828l4.95 4.95a1 1 0 001.414-1.414L13.172 12l5.192-5.192z"/>
+                            ) : (
+                                <path fillRule="evenodd" clipRule="evenodd" d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z"/>
+                            )}
+                        </svg>
+                    </button>
+                </div>
             </div>
             {isOpen && (
                 <div className={`${theme === 'dark' ? 'navbar-dark' : 'navbar-light'} md:hidden mobile-nav`}>
