@@ -9,11 +9,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: '#0D3B66',
+        secondary: '#FAF3DD',
+        dark: '#1E1E1E',
+        light: '#FFFFFF',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        serif: ['Merriweather', 'serif'],
+      },
+      backgroundImage: {
+        'hero-pattern': "url('/images/hero-image.jpg')",
       },
     },
   },
   plugins: [],
 };
+
 export default config;
